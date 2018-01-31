@@ -18,6 +18,7 @@ public class ClientesService {
 	@Inject
 	private ClienteDAO dao;	
 
+	
 	@GET
 	@Path("/listar")
 	@Produces("application/json")

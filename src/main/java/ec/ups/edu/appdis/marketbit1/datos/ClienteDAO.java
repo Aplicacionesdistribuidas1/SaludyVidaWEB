@@ -155,6 +155,7 @@ public class ClienteDAO {
 			return cliente; 
 			} catch (NoResultException e) { 
 				
+				
 				}
 		return null; 
 	}
