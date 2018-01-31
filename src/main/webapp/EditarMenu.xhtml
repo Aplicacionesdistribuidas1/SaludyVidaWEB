@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  				
+	<title>SALUD Y VIDA</title>
+
+  <!-- css -->
+  <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" type="resources/text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css"/>
+   <link href="resources/css/style.css" rel="stylesheet"/>
+  <!-- template skin -->
+  <link id="t-colors" href="resources/color/default.css" rel="stylesheet" />
+
+ 
+<head/>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+
+  <div id="wrapper">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+      <div class="top-area">
+       
+      </div>
+      <div class="container navigation">
+
+        
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="probar.xhtml">Inicio</a></li>
+            <li><a href="ListadoClientes.xhtml">Listar Clientes</a></li>
+            <li><a href="ListadoEmpleados.xhtml">Listar Empleados</a></li>
+            
+            
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+ <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+<f:metadata>
+	<f:viewParam name="id" value="#{menuController.id}"></f:viewParam>
+</f:metadata>
+
+<div align="center">
+   
+ <div class="well well-trans">
+                <div class="wow fadeInRight" data-wow-delay="0.1s">
+                 <h1><h:outputLabel value="EDITAR MENU" for="facdeta" style="color:#000000" /></h1>
+<h:form>
+	<h:panelGrid columns="3">
+		<h:outputLabel value="Id:" for="codigo" style="color:#000000"/>
+		<h:inputText id="codigo" value="#{menuController.menu.codigo}" />
+		<h:message for="codigo"/>
+		
+		<h:outputLabel value="Nombre:" for="nombre" style="color:#000000"/>
+		<h:inputText id="nombre" value="#{menuController.menu.nombre}" />
+		<h:message for="nombre"/>
+		
+		<h:outputLabel value="Tipo:" for="tipo" style="color:#000000"/>
+		<h:inputText id="tipo" value="#{menuController.menu.tipo}" />
+		<h:message for="tipo"/>
+		
+		<h:outputLabel value="Imagen:" for="imagen" style="color:#000000"/>
+		<h:inputText id="imagen" value="#{menuController.menu.imagen}" />
+		<h:message for="imagen"/>
+		
+		<h:outputLabel value="Ingredientes:" for="ingredientes" style="color:#000000"/>
+		<h:inputText id="ingredientes" value="#{menuController.menu.ingredientes}" />
+		<h:message for="ingredientes"/>
+		
+		<h:outputLabel value="Precio del Menu:" for="precio" style="color:#000000"/>
+		<h:inputText id="precio" value="#{menuController.menu.precio}" />
+		<h:message for="precio"/>
+		
+		<h:commandButton action="#{menuController.guardar()}" value="Guardar Menu" class="btn btn-skin btn-lg" />
+		<h:commandButton action="ListadoMenu" value="Listado de Menus" class="btn btn-skin btn-lg" inmediate="true" />
+	</h:panelGrid>
+</h:form>
+     </div>
+    </div>
+	</div>
+	</div>
+	</div>
+	</section>
+	</div>
+	</body>
+</head>
+</html>
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:head>
+    	<h:outputLabel value="Geolocalizacion en JSF"></h:outputLabel>
+    	
+    	    
+    	<style>
+      		#map {
+      			height: 100%;
+      		}
+      		html, body {
+        		height: 100%;
+        		margin: 0;
+        		padding: 0;
+      		}
+    	</style>
+  	</h:head>
+  
+  	<h:body>
+    	<div id="map"></div>
+		<h:button>
+		</h:button>
+	    <script>
+      		function initMap() {
+        		var map = new google.maps.Map(document.getElementById('map'), {
+          			center: {lat: -2.8982478, lng: -79.0053452},
+          			zoom: 15
+        		});
+
+	        	if (navigator.geolocation) {
+	          		navigator.geolocation.getCurrentPosition(function(position) {
+	            	var pos = {
+	              		lat: position.coords.latitude,
+	              		lng: position.coords.longitude
+	            	};
+	            	
+
+	           		var marker = new google.maps.Marker({
+	          			position: pos,
+	          			map: map,
+	          			draggable: true,
+	          			animation: google.maps.Animation.DROP,
+	          			icon: image
+	        		});
+	           		google.maps.event.addListener(map, 'click', function(event) {
+	            		addMarker(event.latLng, map);
+	            	});
+
+	           		function addMarker(location, map) {
+            			var marker = new google.maps.Marker({
+	            			position: location,
+	            		    map: map,
+		          			draggable: true,
+		          			animation: google.maps.Animation.DROP
+	            		});
+	            	}
+	            	
+	           		google.maps.event.addListener(marker1, 'click', function(event) {
+						ruta(event.latLng);
+	            	});
+
+	           		google.maps.event.addListener(marker2, 'click', function(event) {
+						ruta(event.latLng);
+	            	});
+	            	
+	            	function ruta(location){
+	            		var objConfigDR = {
+	    	    	           	map: map,
+	    	    	        }
+
+	    	    	        var objConfigDS = {
+	    	    	    		origin: pos,
+	    		    	    	destination: location,
+	    			    	    travelMode: google.maps.TravelMode.DRIVING
+	    	    			}
+	    	    			
+	    	           		var directionsService = new google.maps.DirectionsService();
+	    					var directionRenderer = new google.maps.DirectionsRenderer(objConfigDR);
+
+	    					directionsService.route(objConfigDS, fnRutear);
+
+
+	    		      		function fnRutear(resultados, status){
+	    						if(status == 'OK'){
+	    							directionRenderer.setDirections(resultados);
+	    						}else{
+	    							alert('error' + status);
+	    						}
+	    					}	
+		            }
+
+
+	          		}, function() {
+	            		handleLocationError(true, infoWindow, map.getCenter());
+	          		});
+						          		
+	        	} 
+
+	        	else {
+	          		handleLocationError(false, infoWindow, map.getCenter());
+	        	}
+      		}
+         	
+      		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        		infoWindow.setPosition(pos);
+        		infoWindow.setContent(browserHasGeolocation ?
+                	'Error: El servicio de geolocalizacion a fallado.' :
+                    'Error: Su navegador no soporta la geolocalizacion.');
+      		}          	  		
+      	</script>
+
+		<script 
+    		src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAXHHxDiI6DCwVSJ-nCk5gX35waUAWpMVM &amp;callback=initMap">
+    	</script>
+  	</h:body>
+</html>

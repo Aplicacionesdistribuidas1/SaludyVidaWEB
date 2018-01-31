@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  				
+	<title>SALUD Y VIDA</title>
+
+  <!-- css -->
+  <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" type="resources/text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css"/>
+   <link href="resources/css/style.css" rel="stylesheet"/>
+  <!-- template skin -->
+  <link id="t-colors" href="resources/color/default.css" rel="stylesheet" />
+
+ 
+<head/>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+
+  <div id="wrapper">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+      <div class="top-area">
+       
+      </div>
+      <div class="container navigation">
+
+        
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="probar.xhtml">Inicio</a></li>
+            
+            
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+ <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+<div align="center">
+               
+ 
+ <div class="well well-trans">
+                <div class="wow fadeInRight" data-wow-delay="0.1s">
+                 <h1><h:outputLabel value="REGISTRATE" for="facdeta" style="color:#000000" /></h1>
+ <h:form>
+	
+		 
+                    <script type="text/javascript">
+					
+                    function confirmacion1(){
+						
+                        alert("Bienvenido nuevo socio");}
+                    </script>
+		
+		<h:panelGrid columns="3">
+		
+		<h:outputLabel value="Cedula:" for="cedula" />
+		<h:inputText id="cedula" value="#{clienteController.cliente.cedula}" validator="#{clienteController.validadorCedula}" />
+		<h:message for="cedula"/>
+		
+		
+		<h:outputLabel value="Nombres:" for="nombres" />
+		<h:inputText id="nombres"  value="#{clienteController.cliente.nombres}" />
+		<h:message for="nombres"/>
+		
+		<h:outputLabel value="E-mail:" for="email" />
+		<h:inputText id="email" value="#{clienteController.cliente.email}" validator="#{clienteController.validadorCorreo}" />
+		<h:message for="email"/>
+		
+		<h:outputLabel value="Usuario:" for="usuario" />
+		<h:inputText id="usuario" value="#{clienteController.cliente.usuario}" validator="#{clienteController.validadorUsuario}"  />
+		<h:message for="usuario"/>
+		
+		<h:outputLabel value="Contraseña:" for="contrasena" />
+		<h:inputSecret id="contrasena" value="#{clienteController.cliente.contrasena}" />
+		<h:message for="contrasena"/>
+		
+		<h:outputLabel value="Fecha Nacimiento (yyyy/mm/dd):" for="fecha" />
+		<h:inputText id="fecha" value="#{clienteController.cliente.fechaNacimiento}" validator="#{clienteController.validadoredad}">
+			<f:convertDateTime pattern="yyyy/mm/dd"/>
+		</h:inputText >
+		<h:message for="fecha"/>
+		
+		
+	</h:panelGrid>
+
+	<h:commandButton action="#{clienteController.guardar()}" onclick="confirmacion1()" value="Guardar Cliente" class="btn btn-skin btn-lg"/>
+		<h:commandButton action="probar.xhtml" value="Volver al inicio" class="btn btn-skin btn-lg" immediate="true" />
+	<h:commandButton action="#{clienteController.addUbicacion()}" value="+ Ubicacion" class="btn btn-skin btn-lg">
+		<f:ajax render="tblUbicacion" execute="@all"/>
+	</h:commandButton>
+<!-- 
+<h:dataTable value="#{clienteController.cliente.ubicaciones}" var="ubicacion" id="tblUbicacion">
+		
+		<h:column>
+			<f:facet name="header"><h:outputLabel value="Direccion" for="Direccion"  /></f:facet>
+			<h:inputText value="#{ubicacionController.ubicacion.direccion}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header"><h:outputLabel value="Sector" for="Sector"  /></f:facet>
+			<h:inputText value="#{ubicacionController.ubicacion.sector}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header"><h:outputLabel value="VectorX" for="VectorX"  /></f:facet>
+			<h:inputText value="#{ubicacionController.ubicacion.vectorx}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header"><h:outputLabel value="VectorY" for="VectorY"  /></f:facet>
+			<h:inputText id="vectory" value="#{ubicacionController.ubicacion.vectory}" />
+		</h:column>
+
+</h:dataTable>
+
+ -->
+<iframe src="http://localhost:8080/marketbit1/faces/ubi.xhtml" width="500" height="500" align="down" />
+
+
+</h:form>
+     </div>
+    </div>
+	</div>
+	</div>
+	</div>
+	</section>
+	</div>
+	</body>
+</head>
+</html>

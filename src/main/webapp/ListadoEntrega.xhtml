@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  				
+	<title>SALUD Y VIDA</title>
+
+  <!-- css -->
+  <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" type="resources/text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css"/>
+   <link href="resources/css/style.css" rel="stylesheet"/>
+  <!-- template skin -->
+  <link id="t-colors" href="resources/color/default.css" rel="stylesheet" />
+
+ 
+<head/>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+
+  <div id="wrapper">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+      <div class="top-area">
+       
+      </div>
+      <div class="container navigation">
+
+        
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="probar.xhtml">Inicio</a></li>
+            
+            
+            
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+ <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+ <div align="center">
+   
+ <div class="well well-trans">
+                <div class="wow fadeInRight" data-wow-delay="0.1s">
+                 <h1><h:outputLabel value="LISTADO DE ENTREGAS" for="facdeta" style="color:#000000" /></h1>
+<h:form>
+
+ 	<h:outputText value="no existe registros guardados" rendered="#{empty entregaController.entregas}"></h:outputText>
+	
+	<h:dataTable value="#{entregaController.entregas}" var="entrega" rendered="#{not empty entregaController.entregas}">
+	<h:column>
+	<f:facet name="header">codigo</f:facet>
+	#{entrega.codigo}	
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">costoenvio</f:facet>
+	#{entrega.costoEnvio}	
+	</h:column>
+	<h:column>
+	<f:facet name="header">Acciones</f:facet>
+	<a href="editarEntrega.xhtml?id=#{entrega.codigo}">Editar</a>
+	</h:column>
+	<h:column>
+	<f:facet name="header">Borrar</f:facet>
+	<h:commandButton action="#{entregaController.eliminarDatos(entrega.codigo)}" value="Borrar Entrega" class="btn btn-skin btn-lg"/>
+	
+	</h:column>
+	
+	</h:dataTable>
+	<h:commandButton value="Logout" class="btn btn-skin btn-lg" action="#{empleadoController.logout()}" ajax="false"> </h:commandButton>
+</h:form>
+     </div>
+    </div>
+	</div>
+	</div>
+	</div>
+	</section>
+	</div>
+	</body>
+</head>
+</html>
